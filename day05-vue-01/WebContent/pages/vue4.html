@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="../js/vue.js"></script>
+<body>
+
+<div id="app">
+	<input type="text" v-model="num"><br>
+	输出2的倍数:{{add}}<br>
+	输出2的倍数后减1:{{add1}}<br>
+		
+</div>
+<script type="text/javascript">
+var app new = Vue({
+	el:"#app";
+	data:{
+		num:10,
+	},
+		computed:{
+			add(){
+				return this.num *2;
+			}
+			add1(){
+				return this.num *2-1;
+			},
+		}
+});
+
+</script>
+</body>
+</html>

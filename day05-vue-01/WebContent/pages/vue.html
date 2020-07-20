@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<input type="text" v-model="name"><br>
+<input type="text" v-model="age"><br>
+<input type="text" v-model="addr"><br>
+{{name}}
+{{age}}
+{{addr}}
+<input type="button" value="加+" v-on:click="age++">
+<input type="button" value="减-" @click="noadd"><br><br><br>
+
+
+<input type="text" v-model="user.name"><br>
+<input type="text" v-model="user.age"><br>
+<input type="text" v-model="user.addr"><br>
+<font color="green"><b>
+{{user.name}}
+{{user.age}}
+{{user.addr}}
+</b></font>
+<input type="button" value="减-" @click="jianshao">
+<br><br><br>
+
+
+<input type="text" v-model="list[1]"><br>
+<input type="text" v-model="list[2]"><br>
+<input type="text" v-model="list[0]"><br>
+{{list[0]}}
+{{list[2]}}
+{{list[1]}}<br>
+<input type="text" v-model="userList[2].id">
+</div>
+<script type="text/javascript">
+var app =new Vue({
+    el:"#app",
+
+        data:{
+           name:"闫辉",
+           age:12,
+           addr:"宁夏",
+           list:[11,12,13],
+           user:{
+        	   name:"豆豆",
+        	   age:19,
+        	   addr:"宁夏"
+           },
+           userList:[
+                     {id:"闫辉",name:"12"},
+                     {id:"豆丁",name:"11"},
+                     {id:"天翔",name:"10"}
+                     ]
+           
+        },
+        methods:{
+        noadd:function(){
+        	this.age--;
+        },	
+        jianshao(){
+        	this.user.age--;
+        }
+        },
+        
+        
+        created(){
+        	alert("淘汰")
+        }
+       
+})
+</script>
+</body>
+</html>

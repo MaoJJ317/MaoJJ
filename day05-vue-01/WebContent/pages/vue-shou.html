@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<center>
+	 <div id="app">
+        <h1><font color="green">学生管理</font></h1>
+         <div v-if="show">
+             <button @click="toadd">添加</button>
+             <table border="1">
+                 <tr>
+                     <td>编号</td>
+                     <td>姓名</td>
+                     <td>性别</td>
+                     <td>年龄</td>
+                     <td>地址</td>
+                     <td>操作</td>
+                 </tr>
+                 <tr v-for="(user,index) in users">
+                     <td>{{index}}</td>
+                     <td>{{user.name}}</td>
+                     <td>{{user.sex==0?'男':'女'}}</td>
+                     <td>{{user.age}}</td>
+                     <td>{{user.addr}}</td>
+                     <td>
+                     	<button> <a @click="del(index)">删除</a></button>
+                        <button> <a @click="toEdit(index)">修改</a><button>
+                     </td>
+                 </tr>
+             </table>
+         </div>
+       
+      <table border="1">
+ 		<tr>
+ 		<td> 
+ 	<div v-if="!show">
+            姓名：<input type="text" v-model="user.name"><br>
+            性别：<input type="radio" v-model="user.sex" value="0">男
+         <input type="radio" v-model="user.sex" value="1">女<br>
+            年龄：<input type="text" v-model="user.age"><br>
+   	  地址 ：<input type="text" v-model="user.addr"><br>   
+            <button @click="add(user)" v-if="!isEdit">添加</button>&nbsp;
+            <button @click="edit(user)" v-if="isEdit">修改</button>&nbsp;
+            <button @click="cancel">取消</button>&nbsp;
+	</div>
+        </td>
+        </tr>
+	</table>
+	
+    </div>
+</body>
+</center>
+	<script>
+        var app =  new Vue({
+            el:"#app",
+            data:{
+                isEdit:false,
+                show:true,
+                user:{},
+                users:[
+                    {name:'郭富城', sex:'0', age: 22,addr:'上海'},
+                    {name:'刘德华', sex:'0', age: 21,addr:'北京'},
+                    {name:'朱茵', sex:'1', age: 22,addr:'宁夏'},
+                    {name:'高圆圆', sex:'1', age: 18,addr:'澳门'},
+                    {name:'郑凯', sex:'0', age: 15,addr:'天津'},
+                    {name:'杨幂', sex:'1', age: 22,addr:'深圳'}
+                ]
+            },
+            methods:{
+                toadd(){
+                    this.isEdit = false;
+                    this.user = {};
+                    this.show=false;
+                },
+                add(user){
+                    this.users.push(user);
+                    this.show=true;
+                },
+                toEdit(index){
+                    this.isEdit=true;
+                    this.user=this.users[index];
+                    this.show=false;
+                },
+                edit(user){
+                    this.show=true;
+                },
+                del(index){
+
+                    this.users.splice(index,2);
+
+                },
+                cancel(){
+                    this.show=true;
+                }
+            }
+
+
+        })
+
+</script>
+</html>
