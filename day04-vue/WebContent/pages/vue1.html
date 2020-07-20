@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="../js/vuejs-2.5.16.js"></script>
+<body>
+<div id="app1">
+	<input type="text" v-model="name">{{name}}--{{age}}
+	<input type="button" value="提交" @click="add">
+	<br>
+
+<!-- 获取对象 -->
+	<input type="text" v-model="user.name">{{user.name}}<br>
+
+<!--获取数组  -->
+	<input type="text" v-model="list[2]">{{list[2]}}<br>
+	
+<!--获取数组+对象  -->	
+	<input type="text" v-model="userList[1].name">{{userList[1].name}}
+	
+	<input type="button" value="年龄+" @click="insert">
+	<input type="button" value="年龄-" @click="add2(3)">
+</div>
+
+<script type="text/javascript">
+	var app1 = new Vue({
+		el:"#app1",
+		data:{
+			//data变量。对象，数组   数组+对象
+			name:"小灰灰",
+			age:10,
+			//对象
+			user:{
+				name:"闫辉",
+				addr:"宁夏"
+			},
+			//数组
+			list:["佬大","老二","老三"],
+			//数组+对象
+			userList:[
+			         {name:"佬大",addr:"北京"} 
+			         {name:"老二",addr:"宁夏"} 
+			         {name:"老三",addr:"河北"} 
+			          ]
+		},
+		methods:{
+			add(){
+				this.age ++;
+			},
+			insert:function(){
+				console.log("age");
+				this.age --;
+			},
+			add2(id){
+				alert(id)
+			}
+		},
+		created(){
+			alert(888);
+		}
+	});
+</script>
+</body>
+</html>

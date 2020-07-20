@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+<div id="app1">
+<input type="text" v-model="uname"><br>
+<input type="text" v-model="uage"><br>
+<input type="text" v-model="uaddr"><br>
+<input type="button" value="+" v-on:click="uage++">
+<input type="button" value="-" @click="toadd">
+		{{uname}}
+		{{uage}}
+		{{uaddr}}
+</div>
+<script type="text/javascript">
+var app =new Vue({
+    el:"#app1",
+
+        data:{
+           uname:"狗子",
+           uage:12,
+           uaddr:"宁夏-银川-灵武"
+        },
+        methods:{
+        toadd:function(){
+        	this.uage--;
+        }	
+        }
+       
+})
+</script>
+</body>
+</html>
